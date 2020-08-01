@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-if & v-else $v-show</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <a href="../index.html">
+        <button>🐱‍🏍back</button>
+    </a>
+    <h1>v-if & v-else $v-show</h1>
+    <hr>
+    <div id="app">
+        <div v-if="isLogin">你好,fucker</div>
+        <div v-else="isLogin">滚🦆</div>
+        <div v-show="isLogin">hhhhhhh v-show</div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                isLogin: true,
+            }
+        })
+    </script>
+    <!-- v-if判断是否加载, 提高网站加载速度, 减轻服务器压力 -->
+    <!-- v-show调整的是display属性, 增加客户端流畅度 -->
+</body>
+</html>

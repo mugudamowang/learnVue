@@ -1,0 +1,25 @@
+{
+  "name": "learnvue",
+  "version": "1.0.0",
+  "description": "Vue demo",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mugudamowang/learnVue.git"
+  },
+  "keywords": [
+    "mugu"
+  ],
+  "author": "mugu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mugudamowang/learnVue/issues"
+  },
+  "homepage": "https://github.com/mugudamowang/learnVue#readme"
+}

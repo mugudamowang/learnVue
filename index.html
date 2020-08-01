@@ -1,31 +1,24 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>这是vue的学习项目</title>
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    </head>
-    <body>
-        <div id="app"></div>
-    </body>
-    <script>
-        let view = new Vue({
-            el: "#app",
-            data: {
-                display: false,
-                taps: [1,2,3]
-            },
-            template :`
-                <div>
-                    <button v-on:click='toggle'>fuck me!!!</button>
-                    <div v-show="display" v-for="item in taps">{{item}}</div>
-                    <div v-if="display">you such a slut!!!</div>
-                </div>
-            `,
-            methods: {
-                toggle(){
-                    this.display = !this.display
-                }
-            }
-        })
-    </script>
+
+<head>
+    <title>Vue.js实例</title>
+    <style>
+        body {
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Vue2.0实例</h1>
+    <hr>
+    <ol>
+        <li><a href="./example/helloworld.html">Hello World</a></li>
+        <li><a href="./example/ifandelse.html">v-if & v-else $v-show</a></li>
+        <li><a href="./example/v-for.html">v-for</a></li>
+
+    </ol>
+</body>
+
 </html>
