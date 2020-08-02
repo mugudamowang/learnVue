@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-model</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <a href="../index.html">
+        <button>🐱‍🏍back</button>
+    </a>
+    <h1>v-model</h1>
+    <hr>
+    <div id="app">
+        <div>
+            <p>文本框信息: {{message}}.</p>
+            v-model: <input type="text" placeholder="正常模式" v-model="message"><br>
+            v-model.lazy: <input type="text" placeholder="懒加载" v-model.lazy="message"><br>
+            v-model.number: <input type="text" placeholder="只输入数字" v-model.number="message"><br>
+            v-model.trim: <input type="text" placeholder="去空格" v-model.trim="message"><br>
+        </div><hr>
+        <div>
+            <p>文本域信息: {{message}}.</p>
+            <textarea cols="30" rows="10" v-model="message"></textarea>
+        </div><hr>
+        <div>
+            <p>多选框绑定单值: {{checked}}</p>
+            <input type="checkbox" id="checkbox" v-model="checked">
+            <label for="checkbox">已阅读</label>
+        </div><hr>
+        <div>
+            <p>多选框绑定数组: {{heros}}</p>
+            <input type="checkbox" id="qiao" value="小乔" v-model="heros">
+            <label for="qiao">小乔</label>
+            <input type="checkbox" id="libai" value="李白" v-model="heros">
+            <label for="libai">李白</label>
+            <input type="checkbox" id="dianwei" value="典韦" v-model="heros">
+            <label for="dianwei">典韦</label>
+            <input type="checkbox" id="yao" value="曜" v-model="heros">
+            <label for="yao">曜</label>
+            <input type="checkbox" id="houyi" value="后羿" v-model="heros">
+            <label for="houyi">后羿</label>
+        </div>
+        <div>
+            <p>单选绑定: 你是? {{gender}}的</p>
+            <input type="radio" id="male" value="男" v-model="gender"><label for="male">男</label>
+            <input type="radio" id="female" value="女" v-model="gender"><label for="female">女</label>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "",
+                checked: false,
+                heros: ["小乔","李白","典韦","曜","后羿"],
+                gender: ''
+            },
+        });
+    </script>
+</body>
+
+</html>

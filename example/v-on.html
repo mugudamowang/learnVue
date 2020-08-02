@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-on</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <a href="../index.html">
+        <button>🐱‍🏍back</button>
+    </a>
+    <h1>v-on</h1>
+    <hr>
+    <div id="app">
+        <div>
+            本场得分:<span v-text="score"></span><br>
+            <input type="text" v-on:keyup.enter="enterAdd" v-model="score2"><br>
+            <button @click="add">+</button>
+            <button @click="sub">-</button>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                score: 0,
+                score2: 1
+            },
+            methods:{
+                add: function(){
+                    this.score++;
+                },
+                sub:function(){
+                    if(this.score > 0){
+                    this.score--;
+                    }
+                },
+                enterAdd: function(){
+
+                    this.score += parseInt(this.score2); 
+                }
+            }
+
+        });
+
+    </script>
+</body>
+
+</html>

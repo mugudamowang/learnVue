@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind</title>
+    <script src="../assets/js/vue.js"></script>
+    <style>
+        .bgWheat{
+            background-color: wheat;
+        }
+        .fontRed{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="../index.html">
+        <button>🐱‍🏍back</button>
+    </a>
+    <h1>v-bind</h1>
+    <hr>
+    <div id="app">
+        <p>1. 标签属性绑定:</p>
+        <p><a :href="href" target="_blank">✨bukun的博客</a></p>
+        <hr>
+        <p>2. class绑定</p>
+        <ol>
+            <li v-bind:class="bgWheat">简单class绑定</li>
+            <li v-bind:class="{bgWheat:isOk}">
+                class判断👉
+                <input type="checkbox" id="isOK" v-model="isOk">
+                <label for="isOK">改变背景</label>
+            </li>
+            <li v-bind:class="[bgWheat, fontRed]">绑定class数组</li>
+            <li v-bind:class="isWheat ? bgWheat : fontRed">
+                支持三元运算
+                <input type="checkbox" id="isWheat" v-model="isWheat">
+                <label for="isWheat">改变class</label>
+            </li>
+            <li v-bind:style="{color: green, fontSize: fontSize}" >绑定style</li>
+            <li v-bind:style="styleObject" >绑定style对象</li>
+        </ol>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                href: "https://www.bukun.top/",
+                bgWheat:"bgWheat",
+                fontRed: "fontRed",
+                isWheat: false,
+                isOk: false,
+                green: "green",
+                fontSize: "30px",
+                styleObject: {
+                    color: 'green',
+                    fontSize: "30px"
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>
