@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width, initial-scale=1.0">
+    <title>others</title>
+    <script src="../assets/js/vue.js"></script>
+
+</head>
+<body>
+    <a href="../index.html">
+        <button>🐱‍🏍back</button>
+    </a>
+    <h1>v-pre & v-cloak & v-once</h1>
+    <hr>
+    <div id="app">
+        v-pre原样输出: <div v-pre>{{message}}</div><br>
+        v-cloak:<div v-cloak>渲染完成后才显示v-cloak</div><br>
+        双向绑定:<div>{{message}}</div>
+        <div><input type="text" v-model="message"></div><br>
+        v-once只渲染一次:<div v-once>{{message}}</div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "Hello World"
+            }
+        })
+    </script>
+</body>
+</html>

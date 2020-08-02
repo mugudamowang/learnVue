@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.directive</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <a href="../index.html">
+        <button>🐱‍🏍back</button>
+    </a>
+    <h1>Vue.directive 自定义指令</h1>
+    <hr>
+    <div id="app">
+        
+        <div v-mugu="color">v-mugu: {{message}}</div>  
+        <p><button @click="add">+</button></p>
+        <p><button onclick="unbind()">解绑</button></p>
+    </div>
+
+    <script>
+        function unbind(){
+            app.$destroy(); //vue它提供的解绑API, 销毁app作用域, 解绑后指令失效
+        }
+        // 自定义指令简单使用
+        // Vue.directive("mugu",function(el, binding){
+        //     console.log(binding)
+        //     el.style = "color: " + binding.value
+        // })
+
+        //自定义指令完整的生命周期: 
+        Vue.directive("mugu",{
+            bind: function(){
+                console.log('life start: bind 绑定');
+            },
+            inserted: function(){
+                console.log('inserted 插入vdom');
+            },
+            update: function(){
+                console.log('update 更新vdom');
+            },
+            componentUpdated: function(){
+                console.log('componentUpdated 更新组件');
+            },
+            unbind: function(){
+                console.log('life end: unbind 解绑');
+            }
+        })
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: 0,
+                color: "red"
+            },
+            methods:{
+                add:function(){
+                    this.message++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

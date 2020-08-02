@@ -21,16 +21,19 @@
             v-model.lazy: <input type="text" placeholder="懒加载" v-model.lazy="message"><br>
             v-model.number: <input type="text" placeholder="只输入数字" v-model.number="message"><br>
             v-model.trim: <input type="text" placeholder="去空格" v-model.trim="message"><br>
-        </div><hr>
+        </div>
+        <hr>
         <div>
             <p>文本域信息: {{message}}.</p>
             <textarea cols="30" rows="10" v-model="message"></textarea>
-        </div><hr>
+        </div>
+        <hr>
         <div>
             <p>多选框绑定单值: {{checked}}</p>
             <input type="checkbox" id="checkbox" v-model="checked">
             <label for="checkbox">已阅读</label>
-        </div><hr>
+        </div>
+        <hr>
         <div>
             <p>多选框绑定数组: {{heros}}</p>
             <input type="checkbox" id="qiao" value="小乔" v-model="heros">
@@ -56,7 +59,7 @@
             data: {
                 message: "",
                 checked: false,
-                heros: ["小乔","李白","典韦","曜","后羿"],
+                heros: ["小乔", "李白", "典韦", "曜", "后羿"],
                 gender: ''
             },
         });
