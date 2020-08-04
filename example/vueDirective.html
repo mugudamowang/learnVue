@@ -31,7 +31,9 @@
 
         //自定义指令完整的生命周期: 
         Vue.directive("mugu",{
-            bind: function(){
+            bind: function(el, binding){
+                console.log(binding)
+                el.style = "color: " + binding.value;
                 console.log('life start: bind 绑定');
             },
             inserted: function(){

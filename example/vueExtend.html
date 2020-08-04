@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.extend</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <a href="../index.html">
+        <button>🐱‍🏍back</button>
+    </a>
+    <h1>Vue.extend 扩展实例构造器</h1>
+    <hr>
+    <div id="app">
+        <p >通过自定义标签&ltmyComponent&gt挂载:</p>
+        <myComponent></myComponent>
+        <p>通过ID挂载: </p>
+        <div id="myComponent"></div>
+    </div>
+    <script>
+        var myComponent = Vue.extend({
+            template: "<h2>这是extend扩展实例构造器:  <a :href='bukun'>{{message}}</a></h2>",
+            data: function () {
+                return {
+                    bukun: "http://www.bukun.top",
+                    message: "bukun.top"
+                }
+            }
+        });
+        new myComponent().$mount("myComponent");    //挂载到自定义标签
+        new myComponent().$mount("#myComponent")    //通过ID挂载到普通标签
+    </script>
+</body>
+
+</html>

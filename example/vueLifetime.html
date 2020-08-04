@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUE生命周期</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <a href="../index.html">
+        <button>🐱‍🏍back</button>
+    </a>
+    <h1>Vue Lifetime</h1>
+    <hr>
+
+    <div id="app">
+        <p v-text="message"></p>
+        <button @click="add">+</button>
+        <br>
+        <button @click="destroyIt">distroy it</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: 0
+            },
+            methods: {
+                add: function () {
+                    this.message++;
+                },
+                destroyIt: function () {
+                    this.$destroy()
+                },
+            },
+            /*
+            每个 Vue 实例在被创建时都要经过一系列的初始化过程——例如，
+            需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。
+            同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给了用户在不同阶段添加自己的代码的机会。
+            */
+            //    不要在选项proprity上使用箭头函数, 因为没有this, 会向上级词法作用域查找直到找到或者到全局, 经常会报错
+            beforeCreate() {
+                console.log("①before created it");
+            },
+            created() {
+                this.add()
+                console.log("②created now");
+            },
+            beforeMount() {
+                console.log("③before mount");
+            },
+            mounted() {
+                console.log("④mount now");
+            },
+            beforeUpdate() {
+                console.log("⑤beforeUpdate");
+            },
+            updated() {
+                console.log("⑥update");
+            },
+            activated() {
+                console.log("⑦activated");
+            },
+            deactivated() {
+                console.log("⑧deactivated");
+            },
+            beforeDestroy() {
+                console.log("⑨beforeDestroy");
+            },
+            destroyed() {
+                console.log("⑩destroyed");
+            },
+        })
+    </script>
+</body>
+
+</html>

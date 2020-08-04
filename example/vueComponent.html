@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue component</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <a href="../index.html">
+        <button>🐱‍🏍back</button>
+    </a>
+    <h1>Vue component</h1>
+    <hr>
+    <div id="app">
+        <comp1></comp1>
+        <comp2></comp2>
+    </div>
+
+    <script type="text/javascript">
+        //全局定义组件, 可以放在多个构造器的作用域内
+        Vue.component("comp1", {
+            template: `<h2>这里是全局定义组件</h2>`
+        })
+
+        //局部注册组件, 只能在改作用内
+        var app = new Vue({
+            el: "#app",
+            components: {   //此处+s, 可以定义多个组件
+                "comp2": {
+                    template: `<h2>这里局部定义组件</h2>`
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

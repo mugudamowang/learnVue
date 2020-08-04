@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.set</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <a href="../index.html">
+        <button>🐱‍🏍back</button>
+    </a>
+    <h1>Vue.set</h1>
+    <hr>
+    <div id="app">
+        {{message.name}}
+        {{message.age}}
+        <p><button onclick="modify()">Vue.set</button></p>
+    </div>
+    <script type="text/javascript">
+        //三种方法在vue构造器外操作内部数据
+        function modify() {
+            Vue.set(externalData, "name", "damowang"); //通过vue.set设置
+            console.log("通过vue.set设置")
+
+            app.message = {     // 直接修改引用数据
+                name: "damowang",
+                age: "22"
+            };
+
+            externalData.name = "damowang"; //直接修改外部数据
+        }
+
+        //外部数据
+        var externalData = {
+            name: "mugu",
+            age: 20,
+        };
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: externalData //引用外部数据
+            }
+        })
+    </script>
+</body>
+
+</html>
