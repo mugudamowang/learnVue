@@ -13,26 +13,80 @@
         <button>🐱‍🏍back</button>
     </a>
     <h1>Vue component</h1>
+    <ol>本节要点:
+        <li>组件类型: 全局和jubu</li>
+        <li>组件属性: props</li>
+        <li>父子组件关系: 构造器外部的局部注册组件</li>
+        <li>&ltcomponent&gt标签</li>
+    </ol>
     <hr>
     <div id="app">
-        <comp1></comp1>
-        <comp2></comp2>
+        <comp1 type="global"></comp1>
+        <hr>
+        <comp2 type="local"></comp2>
+        <hr>
+        <comp2 :type="message"></comp2>
+        <hr>
+        <outer></outer>
+        <hr>
+        <div style="display: flex;">
+            <component :is="which"></component>
+            <button @click="changeComp">改变组件is属性</button>
+        </div>
+
     </div>
 
     <script type="text/javascript">
+        //外部的父子组件的嵌套: 当template较多时, 可以进行js独立文件的引用
+        var outer = {
+            template: `
+            <div>
+            <h2>这里是父组件outer</h2>
+            <inner></inner>
+            </div>
+            `,
+            components: {
+                "inner": {
+                    template: `<h3>这里是子组件inner</h3>`
+                }
+            }
+        };
+        var componentA = {
+            template: `<h2 style="color: red">这里是组件标签A</h2>`,
+        };
+        var componentB = {
+            template: `<h2 style="color: green">这里是组件标签B</h2>`,
+        };
+
         //全局定义组件, 可以放在多个构造器的作用域内
         Vue.component("comp1", {
-            template: `<h2>这里是全局定义组件</h2>`
-        })
+            template: `<h2>这里是全局定义组件-组件属性-type: {{type}}</h2>`,
+            props: ["type"]
+        });
 
         //局部注册组件, 只能在改作用内
         var app = new Vue({
             el: "#app",
-            components: {   //此处+s, 可以定义多个组件
+            data: {
+                which: componentA,
+                message: "local-通过v-bind:绑定到data.message 常用这种"
+            },
+            components: { //此处+s, 可以定义多个组件
                 "comp2": {
-                    template: `<h2>这里局部定义组件</h2>`
+                    template: `<h2>这里局部定义组件-组件属性-type: {{type}}</h2>`,
+                    props: ["type"]
+                },
+                "outer": outer
+            },
+            methods: {
+                changeComp: function () {
+                    if (this.which === componentA) {
+                        this.which = componentB;
+                    } else {
+                        this.which = componentA;
+                    }
                 }
-            }
+            },
         })
     </script>
 </body>
