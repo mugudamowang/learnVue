@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>propsData Options</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <a href="../index.html">
+        <button>🐱‍🏍back</button>
+    </a>
+    <h1>propsData Option</h1>
+    <h3>description: 对全局扩展进行传值, 相比extend当实际上更多使用组件, 故这个选项比较少用</h3>
+    <hr>
+    <div id="app">
+        <myComponent></myComponent>
+    </div>
+
+    <script type="text/javascript">
+        var myComponent = Vue.extend({
+            template:`<h2>{{message}}, 这里是扩展的属性{{prop1}}</h2>`,
+            data: function(){
+                return {
+                    message: "这里是扩展"
+                }
+            },
+            props: ['prop1']
+        })
+        new myComponent({propsData:{prop1:"prop1's value"}}).$mount("myComponent")
+    </script>
+</body>
+</html>

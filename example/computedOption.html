@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>computed Option</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <a href="../index.html">
+        <button>🐱‍🏍back</button>
+    </a>
+    <h1>computed Option</h1>
+    <hr>
+    <div id="app">
+        {{handleMessage}}<br>
+        <ul>
+            <li v-for="item in finalList">{{item.title}} is {{item.date}}</li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        var rawList = [{
+                title: "mother",
+                date: "1"
+            },
+            {
+                title: "fuck",
+                date: "2"
+            },
+            {
+                title: "er",
+                date: "3"
+            },
+        ];
+        var app = new Vue({
+            el: "#app",
+            data: {
+                rawList: rawList,
+                message: "Hello motherfucker World!!"
+            },
+            computed: { //减少对原始数据的污染
+                handleMessage() { //简单的修改
+                    return this.message + "and suck you!!"
+                },
+                finalList() { //对原始列表数据进行加工
+                    return this.rawList.sort(function (a, b) {
+                        return a.date - b.date > 0 ? 1 : -1 //进行排序
+                    });
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
