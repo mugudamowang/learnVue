@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>extend</title>
+    <style>
+        #app{
+            white-space: pre-wrap;
+        }
+    </style>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <a href="../index.html">
+        <button>🐱‍🏍back</button>
+    </a>
+    <h1>extend Option</h1>
+    <hr>
+    <div id="app">
+        <button @click="active">click me</button>
+        <p>{{message}}</p>
+    </div>
+
+    <script type="text/javascript">
+        var extendObj = {
+            updated() {
+                alert("i am extend update")
+            },
+        }
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "Hello motherfucker World!!"
+            },
+            methods: {
+                active: function () {
+                    this.message =
+                        "the differences between extend and mixin is the usage style. \nExtend support only on Object, but mixin should use a arrry []"
+                }
+            },
+            updated: function () {
+                console.log("I am native update")
+            }
+            // delimiters:['${','}'] it replace the default {{}} style insert value
+        })
+    </script>
+</body>
+
+</html>

@@ -21,15 +21,20 @@
 
     <script type="text/javascript">
         var myComponent = Vue.extend({
-            template:`<h2>{{message}}, 这里是扩展的属性{{prop1}}</h2>`,
-            data: function(){
+            template: `<h2>{{message}}, 这里是扩展的属性{{prop1}}</h2>`,
+            data: function () {
                 return {
                     message: "这里是扩展"
                 }
             },
             props: ['prop1']
         })
-        new myComponent({propsData:{prop1:"prop1's value"}}).$mount("myComponent")
+        new myComponent({
+            propsData: {
+                prop1: "prop1's value"
+            }
+        }).$mount("myComponent")
     </script>
 </body>
+
 </html>

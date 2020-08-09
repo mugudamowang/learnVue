@@ -14,40 +14,40 @@
     </a>
     <h1>methods Option</h1>
     <hr>
-    <div id="app">
-        <p>传参+num: {{num}}</p>
-        <p>传$event: {{log}}</p>
-        <button @click="add(1,$event)">构造器方法 +1</button>
-        <hr>
-        <btn @click.native="add(2,$event)"></btn>
-    </div>
+<div id="app">
+    <p>传参+num: {{num}}</p>
+    <p>传$event: {{log}}</p>
+    <button @click="add(1,$event)">构造器方法 +1</button>
     <hr>
-    <!-- 外部调用methods -->
-    <button onclick="app.add(3,event)">js原生调用构造器的methods +3</button>
+    <btn @click.native="add(2,$event)"></btn>
+</div>
+<hr>
+<!-- 外部调用methods -->
+<button onclick="app.add(3,event)">js原生调用构造器的methods +3</button>
 
-    <script type="text/javascript">
-        var btn = {
-            template: `<button>外部组件按钮绑定methods用.native +2</button>`
-        };
+<script type="text/javascript">
+    var btn = {
+        template: `<button>外部组件按钮绑定methods用.native +2</button>`
+    };
 
-        var app = new Vue({
-            el: "#app",
-            data: {
-                num: 0,
-                log: ""
+    var app = new Vue({
+        el: "#app",
+        data: {
+            num: 0,
+            log: ""
+        },
+        components: {
+            "btn": btn,
+        },
+        methods: {
+            add: function (parameter, event) {
+                this.log = event;
+                this.num += parameter;
             },
-            components: {
-                "btn": btn,
-            },
-            methods: {
-                add: function (parameter, event) {
-                    this.log = event;
-                    this.num += parameter;
-                },
 
-            },
-        })
-    </script>
+        },
+    })
+</script>
 </body>
 
 </html>

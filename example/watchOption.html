@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>watchOption</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <a href="../index.html">
+        <button>🐱‍🏍back</button>
+    </a>
+    <h1>watch Option</h1>
+    <hr>
+    <div id="app">
+        <p>
+            {{temperature}}℃
+        </p>
+        <p>
+            {{suggestion}}
+        </p>
+        <button @click="degreeUp">+</button>
+        <button @click="degreeDown">-</button>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: "#app",
+            data: {
+                temperature: 18,
+                suggestion: "Hello mugu~, it's a little cool, take your scarf"
+            },
+            methods: {
+                degreeUp: function () {
+                    this.temperature++;
+                },
+                degreeDown: function () {
+                    this.temperature--;
+                }
+            },
+
+            //usage01 : use in a the constructor
+            watch: {
+                temperature: function (newVal, oldVal) {
+                    if (newVal > 27) {
+                        this.suggestion = "it is really hot today"
+                    } else if (newVal < 10) {
+                        this.suggestion = "winter is coming"
+                    }
+                }
+            }
+        })
+
+        //usage02 : use via app instance
+        app.$watch("suggestion", function (newVal, oldVal) {
+            console.log("this is mounted by app instance")
+        })
+    </script>
+</body>
+
+</html>
