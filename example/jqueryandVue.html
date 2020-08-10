@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery in Vue</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <a href="../index.html">
+        <button>🐱‍🏍back</button>
+    </a>
+    <h1>jquery in Vue</h1>
+    <hr>
+    <button onclick="tick()">change</button>
+    <div id="app">
+        <p>
+            {{message}}
+        </p>
+        <p id="forJquery"></p>
+    </div>
+
+    <script type="text/javascript">
+        function tick(){
+            console.log("hello this is a tick");
+            app.message = "hhhhh"
+            app.$nextTick(function(){
+                console.log("it is executed after data have been fixed");
+            })
+        }
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "Hello motherfucker World!!"
+            },
+            methods: {
+                change(){
+                    this.message = "i have been changed, take a look!"
+                }
+            },
+            //replace the html inner the #app when it was mounted
+            mounted: function(){
+                $('#forJquery').html("hello JQuery! You aren't out of date~")
+            },
+
+        })
+    </script>
+</body>
+
+</html>

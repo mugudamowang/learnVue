@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slot</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <a href="../index.html">
+        <button>🐱‍🏍back</button>
+    </a>
+    <h1>Slot's usage</h1>
+    <hr>
+    <div id="app">
+        <h2>how to use a slot in template</h2>
+        <p>step1: use 'slot="name"' directive in html of your template</p>
+        <p>step2: use '&ltslot name=""&gt' in template</p>
+        <mugu>
+            <span slot="name">{{me.name}}</span>
+            <span slot="age">{{me.age}}</span>
+        </mugu>
+    </div>
+    <template id="mugu">
+        <div style="border: 1px solid;">
+            <h2>this is a template</h2><hr>
+            <h3>these are slot form html:</h3>
+            <p>
+                姓名：<slot name="name"></slot>
+                年龄：<slot name="age"></slot>
+            </p>
+        </div>
+    </template>
+
+    <script type="text/javascript">
+        var mugu = {
+            template: "#mugu"
+        }
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "Hello motherfucker World!!",
+                me: {
+                    name: "mugu",
+                    age: 20
+                }
+            },
+            components: {
+                "mugu": mugu
+            }
+        })
+    </script>
+</body>
+
+</html>
